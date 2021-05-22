@@ -1,0 +1,32 @@
+
+<!-- contact -->
+<div class="contact py-sm-5 py-4">
+  <div class="container py-xl-4 py-lg-2">
+    <!-- tittle heading -->
+    <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+      <span>O</span>ur
+      <span>E</span>vents
+    </h3>
+    <!-- //tittle heading -->
+        <div class="col-md-12">
+          <div class="row">
+            <div class="col-md-4 col-sm-6" *ngFor="let p of events.reverse() |
+                                                    paginate: { 
+                                                      itemsPerPage: 5, 
+                                                      currentPage: page, 
+                                                      totalItems:totalLength }">
+
+              <div class="card my-2">
+                <img src="http://localhost:5000/{{p.picture}}" with="200" class="card-img-top">
+                <div class="card-header">
+                  <div class="card-title">
+                    <p>{{p.title}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>	
+  </div>
+  <pagination-controls class="text-center my-pagination" (pageChange)="page = $event"></pagination-controls>
+</div>

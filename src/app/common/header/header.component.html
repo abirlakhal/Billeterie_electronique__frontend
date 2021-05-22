@@ -1,0 +1,240 @@
+<!-- top-header -->
+<div class="agile-main-top">
+  <div class="container-fluid">
+    <div class="row main-top-w3l py-2">
+      <div class="col-lg-4 header-most-top">
+        <p class="text-white text-lg-left text-center">Book your ticket
+          <i class="fa fa-qrcode"></i>
+        </p>
+      </div>
+      <div class="col-lg-8 header-right mt-lg-0 mt-2">
+        <!-- header lists -->
+        <ul>
+          <li class="text-center border-right text-white">
+            
+          </li>
+          <li class="text-center border-right text-white">
+            
+          </li>
+          <li class="text-center border-right text-white">
+            <i class="fas fa-phone mr-8"></i> +216 73212492
+          </li>
+          <li class="text-center border-right text-white" *ngIf="loggeddIn == undefined">
+            <a href="#" data-toggle="modal" data-target="#exampleModal" class="text-white">
+              <i class="fas fa-sign-in-alt mr-4" ></i> Log In </a>
+          </li>
+          <li class="text-center text-white" *ngIf="loggeddIn == undefined">
+            <a href="#" data-toggle="modal" data-target="#exampleModal2" class="text-white">
+              <i class="fas fa-sign-out-alt mr-4" ></i>Register </a>
+          </li>
+          <li class="text-center border-right text-white" *ngIf="loggeddIn != undefined">
+            Welcome {{userDetails.pseudo}}
+          </li>
+          <li class="text-center text-white" *ngIf="loggeddIn != undefined">
+            <input type="button" class="btn btn-light" (click)="onLogout()" value="Logout" />
+          </li>
+        </ul>
+        <!-- //header lists -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- log in -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title text-center">Log In</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form #signIn="ngForm" (ngSubmit)="signIn.valid && onSubmit(signIn)">
+          <div class="form-group">
+            <label class="col-form-label">Email</label>
+            <input type="text" name="email" #email="ngModel" [(ngModel)]="model.email" placeholder="exemple@email.com" [pattern]="emailRegex" class="form-control" required
+              [ngClass]="{'invalid-textbox' :signIn.submitted && !email.valid}">
+            <div *ngIf="signIn.submitted && email.errors?.pattern">
+              <label class="validation-message">Invalid email address.</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-form-label">Password</label>
+            <span><i class="fas fa-eye" aria-hidden="true" id="eye5" (click)="toggle5()"></i></span>
+            <input type="password" name="password" #password="ngModel" [(ngModel)]="model.password" placeholder="password" minlength="6" class="form-control" id="password3" required
+              [ngClass]="{'invalid-textbox' :signIn.submitted && !password.valid}" >
+            <div *ngIf="signIn.submitted && password.errors?.minlength">
+              <label class="validation-message">Invalid password.</label>
+            </div>
+          </div>
+          <div class="right-w3l">
+            <input type="submit" class="form-control" value="Sign In">
+          </div>
+          <div class="sub-w3l">
+            <div class="custom-control custom-checkbox mr-sm-2">
+              <input type="checkbox" class="custom-control-input" id="customControlAutosizing">
+              <label class="custom-control-label" for="customControlAutosizing">Remember me?</label>
+            </div>
+          </div>
+          <p class="text-center dont-do mt-3">Don't have an account?
+            <a href="#" data-toggle="modal" data-target="#exampleModal2">
+              Register Now</a>
+          </p>
+        </form>
+        <div class="p-3 mb-2 bg-danger text-white" *ngIf="emess">
+          {{emess}}
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- register -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Register</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="signupForm" (ngSubmit)="click()">
+          <div class="btn-group btn-group-toggle" data-toggle="buttons">
+            <label class="btn btn-light active" (click)="change_user(0)">
+              <input type="radio" name="user" id="cli" autocomplete="off" (click)="change_user($event)" checked> Client
+            </label>
+            <label class="btn btn-light" (click)="change_user(1)">
+              <input type="radio" name="user" id="org" autocomplete="off"> Organizer
+            </label>
+          </div>
+
+          <div *ngIf = "role"> 
+            <br>
+            <p>SignUp as a <span class="text-danger">Organizer</span></p>
+            <hr>
+            <div class="form-group">
+              <label class="col-form-label">Pseudo <span class="error">*</span> </label>
+              <input type="text" formControlName="pseudo" class="form-control" placeholder="your pseudo" name="pseudo" required>
+              <small class="error" *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)">
+                <div *ngIf="f.pseudo.hasError('required')">This field is required.</div>
+            </small>
+            </div>
+            <div class="form-group">
+              <label class="col-form-label">Email <span class="error">*</span> </label>
+              <input type="email" formControlName="email" class="form-control" placeholder="exemple@gmail.com" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" required >
+              <!-- <small class="error" *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)">
+                <div *ngIf="f.email.hasError('required')">This field is required.</div>
+                <div *ngIf="f.email.hasError('email')">Enter valid email address.</div>
+              </small>-->
+              <small class="error" *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)">
+                <div *ngIf="f.email.hasError('required')">This field is required.</div>
+                <div *ngIf="signupForm.get('email').invalid && (signupForm.get('email').dirty || signupForm.get('email').touched)">Please enter valid email</div>
+              </small>
+            </div>
+            <div class="form-group" >
+              <label class="col-form-label">Institute <span class="error">*</span></label>
+              <input type="text" formControlName="institute" class="form-control" placeholder="Your institute" name="institude" id="inst">
+            </div>
+            <div class="form-group" >
+              <label class="col-form-label">Account number <span class="error">*</span> </label>
+              <input type="text" formControlName="numC" class="form-control" placeholder="Account Number" name="numC" id="numC">
+            </div>
+            <div class="form-group">
+              <label class="col-form-label">Password <span class="error">*</span> </label>
+              <input type="password" formControlName="password" class="form-control" placeholder="Password" name="password" id="password2" required>
+              <span><i class="fas fa-eye" aria-hidden="true" id="eye3" (click)="toggle3()"></i></span>
+              <small class="error" *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">
+                <div *ngIf="f.password.hasError('required')">This field is required.</div>
+                <div *ngIf="f.password.hasError('minlength')">Password must be at least 6 characters.</div>
+             </small>
+            </div>
+            <div class="form-group">
+              <label class="col-form-label">Confirm Password <span class="error">*</span> </label>
+              <input type="password" formControlName="passconf" class="form-control" placeholder="Password" name="Confirm Password" id="passconf2" required>
+              <span><i class="fas fa-eye" aria-hidden="true" id="eye4" (click)="toggle4()"></i></span>
+              <small class="error" *ngIf="f.passconf.invalid && (f.passconf.dirty || f.passconf.touched)">
+                <div *ngIf="f.passconf.hasError('required')">This field is required.</div>
+              </small>
+              <small class="error" *ngIf="signupForm.errors?.passwordmatch && (signupForm.dirty || signupForm.touched)">
+                Password and confirm password must be match.
+              </small>
+            </div>
+            <div class="right-w3l">
+              <input type="submit" class="form-control" value="Sign Up">
+            </div>
+          </div>
+
+          <div *ngIf = "!role"> 
+            <br>
+            <p>SignUp as a <span class="text-danger" >Client</span></p>
+            <hr>
+            <div class="form-group">
+              <label class="col-form-label">Pseudo <span class="error">*</span> </label>
+              <input type="text" formControlName="pseudo" class="form-control" placeholder="your pseudo" name="pseudo" required>
+              <small class="error" *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)">
+                <div *ngIf="f.pseudo.hasError('required')">This field is required.</div>
+              </small>
+            </div>
+            <div class="form-group">
+              <label class="col-form-label">Email <span class="error">*</span> </label>
+              <input type="email" formControlName="email" class="form-control" placeholder="exemple@gmail.com" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,63}$" required >
+              <!-- <small class="error" *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)">
+                <div *ngIf="f.email.hasError('required')">This field is required.</div>
+                <div *ngIf="f.email.hasError('email')">Enter valid email address.</div>
+              </small>-->
+              <small class="error" *ngIf="f.email.invalid && (f.email.dirty || f.email.touched)">
+                <div *ngIf="f.email.hasError('required')">This field is required.</div>
+                <div *ngIf="signupForm.get('email').invalid && (signupForm.get('email').dirty || signupForm.get('email').touched)">Please enter valid email</div>
+              </small>
+            </div>
+            <div class="form-group">
+              <label class="col-form-label">Phone <span class="error">*</span></label>
+              <input type="text" formControlName="phone" class="form-control" placeholder="+(000) 00 000 000" name="phone" >
+              <small class="error" *ngIf="f.phone.invalid && (f.phone.dirty || f.phone.touched)">
+                <div *ngIf="f.phone.hasError('required')">This field is required.</div>
+              </small>
+            </div>
+            <div class="form-group">
+              <label class="col-form-label">Password <span class="error">*</span> </label>
+              <input type="password" formControlName="password" class="form-control" placeholder="Password" name="password" id="password" required> 
+              <span><i class="fas fa-eye" aria-hidden="true" id="eye" (click)="toggle()"></i></span>
+              <small class="error" *ngIf="f.password.invalid && (f.password.dirty || f.password.touched)">
+                <div *ngIf="f.password.hasError('required')">This field is required.</div>
+                <div *ngIf="f.password.hasError('minlength')">Password must be at least 6 characters.</div>
+             </small>
+            </div>
+            <div class="form-group">
+              <label class="col-form-label">Confirm Password <span class="error">*</span> </label>
+              <input type="password" formControlName="passconf" class="form-control" placeholder="Password" name="Confirm Password" id="passconf" required>
+              <span><i class="fas fa-eye" aria-hidden="true" id="eye2" (click)="toggle2()"></i></span>
+              <small class="error" *ngIf="f.passconf.invalid && (f.passconf.dirty || f.passconf.touched)">
+                <div *ngIf="f.passconf.hasError('required')">This field is required.</div>
+              </small>
+              <small class="error" *ngIf="signupForm.errors?.passwordmatch && (signupForm.dirty || signupForm.touched)">
+                Password and confirm password must be match.
+              </small>
+            </div>
+            <div class="right-w3l">
+              <input type="submit" class="form-control" value="Sign Up">
+            </div>
+          </div>
+        </form>
+        <div *ngIf="smess">
+          saved succeefully
+        </div>
+        <div *ngIf="emess">
+          {{emess}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- //top-header -->
+

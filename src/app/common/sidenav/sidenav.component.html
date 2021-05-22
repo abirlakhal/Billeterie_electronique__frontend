@@ -1,0 +1,65 @@
+
+<!-- header-bottom-->
+<div class="header-bot">
+  <div class="container">
+    <div class="row header-bot_inner_wthreeinfo_header_mid">
+      <!-- logo -->
+      <div class="col-md-3 logo_agile">
+        <h2 class="text-center">
+          <a href="index.html" class="font-weight-bold font-italic">
+            <img src="./assets/images/logoM.png" alt=" " class="img-fluid"> RESERVI
+          </a>
+        </h2>
+      </div>
+      <!-- //logo -->
+      
+
+      <div class="col-md-9 header mt-4 mb-md-0 mb-4">
+        
+              <h1>Electronic tickets apps </h1>
+          
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- navigation -->
+<div class="navbar-inner">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+        <ul class="navbar-nav ml-auto text-center mr-xl-5">
+          <li class="nav-item  mr-lg-2 mb-lg-0 mb-2">
+            <a class="nav-link" routerLinkActive="active" routerLink="/home" >Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item mr-lg-2 mb-lg-0 mb-2 dropdown" >
+            <a class="nav-link dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              All Categories
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" *ngFor="let c of cat" routerLinkActive="active" routerLink="/ev/{{c._id}}" >{{c.libelle}}</a>
+            </div>
+          </li>
+          
+          <li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+            <a class="nav-link" routerLinkActive="active" routerLink="/events" >Events</a>
+          </li>
+          <li class="nav-item mr-lg-2 mb-lg-0 mb-2">
+            <a class="nav-link" routerLinkActive="active" routerLink="/about">About Us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" routerLink="contact">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>
+<!-- //navigation -->
+
