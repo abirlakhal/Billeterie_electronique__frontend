@@ -1,0 +1,35 @@
+<div class="container">
+  <br> 
+  <div class="row">
+    <div class="col-sm">
+      <input class="form-control" type="search" [(ngModel)]=n placeholder="Search by name" >
+    </div>
+    <div class="col-sm">
+      <button class=" ci btn my-2 my-sm-0" routerLink="/createevent" >Create Event</button>
+    </div> 
+</div>
+
+<br>
+
+<table class="table"  *ngIf="filtretab;else sinon" >
+<tr class="table-danger" >
+    <th width="30%"> Event </th>
+    <th width="30%"> Name </th>
+    <th width="30%"> Place </th>
+</tr>
+
+<tr *ngFor="let p of filtretab.reverse() | 
+            paginate: { 
+              itemsPerPage: 5, 
+              currentPage: page, 
+              totalItems:totalLength }">
+   <td width="30%"> 
+     <img src="http://localhost:5000/{{p.picture}}" width="150" height= "100" >
+    </td>
+    <!--[routerLink]="['/event',p.id ]"-->
+   <td> <a  routerLink="/event/{{p._id}}" >{{p.title|uppercase}}</a> </td>
+   <td> {{p.place}} </td>
+</tr>
+</table>
+
+<pagination-controls class="text-center my-pagination" (pageChange)="page  = $event"></pagination-controls>

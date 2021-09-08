@@ -1,0 +1,80 @@
+
+<br>
+<div class="container">
+  <div class="row">
+      <div class="col-lg-6 mb-5 mb-lg-0">
+          <div *ngIf="event" >
+            <img class="featured-image" src="http://localhost:5000/{{event.picture}}" >
+            <br>
+            <h4><div class="des" >{{event.description}}</div></h4>
+            
+          </div>
+        </div>  
+        <div class="col-lg-6 mt-5 mt-md-0">
+
+          <div class="row">
+            <div class="col-sm-5">
+              <h1>{{event.title}}</h1>
+            </div>
+            <div class="col-sm-5">
+              <h1 class="left">{{event.price}} D</h1>
+            </div>
+          </div>
+          <hr>
+
+          <div class="row">
+            <div class="col-sm-2">
+              <h3>DATE:</h3>
+            </div>
+            <div class="col-sm-6"> 
+              <h4>{{event.date | date:'dd/ MM/ y'}}</h4>
+            </div> 
+          </div>    
+          <br>
+          <div class="row">
+            <div class="col-sm-2">
+              <h3>TIME:</h3>
+            </div>
+            <div class="col-sm-6">  
+              <h4>{{event.time}}</h4>
+            </div>
+          </div>    
+          <br>
+          <div class="row">
+            <div class="col-sm-2">
+              <h3>PLACE:</h3>
+            </div> 
+            <div class="col-sm-6">
+              <h4><div class="pl">{{event.place}}</div></h4>
+            </div> 
+          </div>    
+          <br>
+          <hr>
+          <div class= "row">
+            <div class="col-lg-4">
+              <button  type="button" class="btn btn-info" (click)="backClicked()" color="danger">&lt; &lt; Go back</button>
+            </div>
+            <!-- <div class="col-lg-4">
+              <button
+                type="button" class="btn btn-success"
+                attr.data-item-id="{{event._id}}"
+                attr.data-item-name="{{event.title}}"
+                attr.data-item-price="{{product.price}}"
+                attr.data-item-url="shop/{{product._id}}"
+                attr.data-item-description="{{event.description}}"
+                mat-raised-button
+                color="primary">
+                Add To favories
+              </button>
+            </div>-->
+            <!-- routerLink="/paypal"  *ngIf="loggeddIn == undefined"  -->
+            <div class="col-lg-2">
+                <button type="button" class="btn btn-warning"
+                color="primary" (click)="buyClicked()" >
+                Buy
+              </button>
+            </div>
+          </div>
+        </div>
+   </div>
+</div>

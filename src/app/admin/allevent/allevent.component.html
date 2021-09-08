@@ -1,0 +1,38 @@
+<div class="container">
+  <h1 class="text-center"> Events </h1>
+  <br>
+  
+  <input class="form-control" type="search" [(ngModel)]=n placeholder="Search by pseudo" >
+
+
+  <br>
+  <table class="table"  *ngIf="filtretab;else sinon" >
+    <tr class="table-danger" >
+        
+        <th width="20%"> Name </th>
+        <th width="20%"> Show </th>
+        <th width="20%"> Update </th>
+        <th width="20%"> Delete </th>
+    </tr>
+    
+    <tr *ngFor="let p of filtretab.reverse() | 
+                paginate: { 
+                  itemsPerPage: 5, 
+                  currentPage: page, 
+                  totalItems:totalLength }">
+        <td> {{p.title|uppercase}} </td>
+        <td>
+          <a class="btn btn-secondary" routerLink="eventd/{{p._id}}"><i class="fa fa-list"></i></a> 
+        </td>
+              
+              <td>
+                <button class="btn btn-warning " (click)="update(p.id)"><i class="fa fa-edit"></i></button>
+               </td>
+               <td>
+                <button class="btn btn-danger" (click)="del(p._id)"><i class="fa fa-trash"></i></button> 
+            </td>
+            </tr>
+      
+  </table>
+  <pagination-controls class="text-center my-pagination" (pageChange)="page  = $event"></pagination-controls>
+</div>

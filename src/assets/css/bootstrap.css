@@ -1329,9 +1329,9 @@ pre code {
   }
   .col-lg-8 {
     -webkit-box-flex: 0;
-    -ms-flex: 0 0 66.666667%;
-    flex: 0 0 66.666667%;
-    max-width: 66.666667%;
+    /*-ms-flex: 0 0 66.666667%;*/
+    flex: 5%;
+    /*max-width: 70%;*/
   }
   .col-lg-9 {
     -webkit-box-flex: 0;
@@ -7633,7 +7633,7 @@ button.bg-dark:focus {
 
 .pt-3,
 .py-3 {
-  padding-top: 1rem !important;
+  padding-top: 0.5rem !important;
 }
 
 .pr-3,
@@ -7643,7 +7643,7 @@ button.bg-dark:focus {
 
 .pb-3,
 .py-3 {
-  padding-bottom: 1rem !important;
+  padding-bottom: 0.5rem !important;
 }
 
 .pl-3,
@@ -8823,6 +8823,7 @@ button.bg-dark:focus {
 
 .font-italic {
   font-style: italic !important;
+  color: #b3020d;
 }
 
 .text-white {

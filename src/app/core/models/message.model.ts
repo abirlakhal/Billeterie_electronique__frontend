@@ -1,4 +1,4 @@
-export interface MessageModel { 
+export interface MessageModel {
   main: string;
 }
 

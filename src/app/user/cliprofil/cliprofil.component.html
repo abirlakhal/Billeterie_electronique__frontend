@@ -1,0 +1,45 @@
+<div class="container">
+  <h1 class="text-center"> Clients </h1>
+  <br>
+  <div class="col-md-8 center">
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Pseudo</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{client.pseudo}}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Email</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{client.email}}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Phone</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{client.phone}}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm">
+            <button  type="button" class="btn " (click)="backClicked()" color="danger"> back >> </button>
+          </div>
+          <div class="col-sm"> 
+            <button type="button" class="btn" routerLink="/updateUser/{{client._id}}"> Edit </button>
+          </div>
+        </div>
+     </div>
+   </div>
+ </div>
+</div>

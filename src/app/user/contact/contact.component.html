@@ -1,0 +1,64 @@
+
+<!-- contact -->
+<div class="contact py-sm-5 py-4">
+  <div class="container py-xl-4 py-lg-2">
+    <!-- tittle heading -->
+    <h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
+      <span>C</span>ontact
+      <span>U</span>s
+    </h3>
+    <!-- //tittle heading -->
+    <div class="row contact-grids agile-1 mb-5">
+      <div class="col-sm-4 contact-grid agileinfo-6 my-sm-0 my-4">
+        <div class="contact-grid1 text-center">
+          <div class="con-ic">
+            <i class="fas fa-phone rounded-circle"></i>
+          </div>
+          <h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Call Us</h4>
+          <p>+(216) 50 592 906
+            <label>+(216) 22 795 228</label>
+          </p>
+        </div>
+      </div>
+      <div class="col-sm-4 contact-grid agileinfo-6">
+        <div class="contact-grid1 text-center">
+          <div class="con-ic">
+            <i class="fas fa-envelope-open rounded-circle"></i>
+          </div>
+          <h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Email</h4>
+          <p>
+            <a href="mailto:info@example.com">abirlakhal20@gmail.com</a>
+            <label>
+              <a href="mailto:info@example.com">abir.lakhal2020@gmail.com</a>
+            </label>
+          </p>
+        </div>
+      </div>
+      <div class="col-sm-4 contact-grid agileinfo-6">
+        <div class="contact-grid1 text-center">
+          <div class="con-ic">
+            <i class="fas fa-map-marker-alt rounded-circle"></i>
+          </div>
+          <h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Address</h4>
+          <p>
+            <a href="https://www.google.com/maps/place/Rue+Moncef+Bey,+Sousse/@35.8330528,10.6226189,17z/data=!3m1!4b1!4m5!3m4!1s0x1302757f303a937b:0x6c94137fee80ef3f!8m2!3d35.8330528!4d10.6248076?hl=fr" target="_blank" >8 Rue Moncef Bey,</a>
+            <label>Sousse-Tunis</label>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- form -->
+    <form #myForm="ngForm" (ngSubmit)="onSubmit(myForm)">
+        <div class="contact-grids1 w3agile-6">
+          <div class="contact-me animated wow slideInUp form-group">
+            <label class="col-form-label"><h3>Message</h3></label>
+            <textarea id="main" name="main" #main="ngModel" [(ngModel)]="messageService.message.main" placeholder="Write your comments .... here is anonymous" (ngModelChange)="onTextChange($event)" > </textarea>
+          </div>
+          <input type="submit" value="Submit"> 
+        </div>
+    </form>
+    <!-- //form -->
+  </div>
+</div>
+<!-- //contact -->
+

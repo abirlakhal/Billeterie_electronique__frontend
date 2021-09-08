@@ -1,0 +1,30 @@
+.center {
+    margin: auto;
+    width: 60%;
+    //border: 3px solid #f5c6cb;
+    padding: 10px;
+    text-align: center;
+  }
+
+  #customers {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #customers td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #customers tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #ddd;}
+  
+  #customers th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #f5c6cb;
+    color: rgb(0, 0, 0);
+  }

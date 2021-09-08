@@ -1,0 +1,27 @@
+img {
+    border-radius: 8px;
+    width: 400px;
+  }
+  .left{
+    position: relative;
+    background-color: #b3020d;
+    color:#fafafa;
+    width: 100px;
+  }
+.des{
+  width: 400px;
+}  
+.pl{
+  margin-left: 12px;
+}
+.btn {
+  background-color:#b3020d;
+  color: white;
+  padding: 6px;
+  margin: 2px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}

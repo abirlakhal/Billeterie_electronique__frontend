@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Urls } from 'src/environments/urls';
 import { EventModel } from '../models/event.model';
-import { Subject } from "rxjs";
+import { Observable, Subject } from "rxjs";
 
 
 @Injectable({
@@ -51,6 +51,15 @@ export class EventService {
 
   getByCat(id: string){
     return this.http.get<EventModel[]>(this.Endpoint+'bycat/'+id);
+  }
+
+  del(id: string):Observable<void>{
+    return this.http.delete<void>(this.Endpoint+id);
+ }
+
+  updateevent(id:string,data:any):Observable<EventModel>{
+
+    return this.http.put<EventModel>(this.Endpoint+id,data)
   }
 
 }

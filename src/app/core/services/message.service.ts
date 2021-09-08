@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Urls } from 'src/environments/urls';
 import { MessageModel } from '../models/message.model';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
@@ -19,6 +20,18 @@ export class MessageService {
 
   sendMessage(message: MessageModel){
     return this.http.post(this.Endpoint+'create' , message);
+  }
+
+  getAllMessages(){
+    return this.http.get<MessageModel[]>(this.Endpoint);
+  }
+
+  getById(id:String){
+    return this.http.get<MessageModel>(this.Endpoint+ id);
+  }
+  
+  del(id: string):Observable<void>{
+    return this.http.delete<void>(this.Endpoint+id);
   }
   
 }

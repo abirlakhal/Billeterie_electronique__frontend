@@ -1,0 +1,64 @@
+<div class="container">
+  <h1 class="text-center"> Organizer </h1>
+  <br>
+  <div class="col-md-8 center">
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Pseudo</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{orga.pseudo}}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Email</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{orga.email}}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Phone</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{orga.phone}}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Institute</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{orga.institute}}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm-3">
+            <h6 class="mb-0">Account</h6>
+          </div>
+          <div class="col-sm-9 text-secondary">
+            {{orga.numC}}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-sm">
+            <button  type="button" class="btn" (click)="backClicked()" color="danger">&lt; &lt; Go back</button>
+          </div>
+          <div class="col-sm">
+            <button type="button" class="btn" routerLink="/updateOrg/{{orga._id}}"> OK </button>
+          </div>
+        </div>
+     </div>
+   </div>
+ </div>
+</div>
+

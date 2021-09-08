@@ -6,9 +6,9 @@
       <!-- logo -->
       <div class="col-md-3 logo_agile">
         <h2 class="text-center">
-          <a href="index.html" class="font-weight-bold font-italic">
+          <div class="font-weight-bold font-italic">
             <img src="./assets/images/logoM.png" alt=" " class="img-fluid"> RESERVI
-          </a>
+          </div>
         </h2>
       </div>
       <!-- //logo -->
@@ -34,7 +34,7 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent" >
         <ul class="navbar-nav ml-auto text-center mr-xl-5">
           <li class="nav-item  mr-lg-2 mb-lg-0 mb-2">
-            <a class="nav-link" routerLinkActive="active" routerLink="/home" >Home
+            <a class="nav-link" routerLinkActive="active" routerLink="" >Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
@@ -46,7 +46,6 @@
               <a class="dropdown-item" *ngFor="let c of cat" routerLinkActive="active" routerLink="/ev/{{c._id}}" >{{c.libelle}}</a>
             </div>
           </li>
-          
           <li class="nav-item mr-lg-2 mb-lg-0 mb-2">
             <a class="nav-link" routerLinkActive="active" routerLink="/events" >Events</a>
           </li>
@@ -54,7 +53,7 @@
             <a class="nav-link" routerLinkActive="active" routerLink="/about">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" routerLink="contact">Contact Us</a>
+            <a class="nav-link" routerLinkActive="active" routerLink="/contact">Contact Us</a>
           </li>
         </ul>
       </div>

@@ -1,0 +1,27 @@
+.my-pagination /deep/ .ngx-pagination .current {
+    background: #f5c6cb;
+  }
+
+  img {
+    border-radius: 8px;
+  }
+
+.title{
+    color:#b3020d;
+  }
+
+.right{
+  margin-right: 45px;
+}
+
+.left{
+  position: relative;
+  background-color: #b3020d;
+  color:#fafafa;
+  margin-left: 45px;
+}
+.card{
+  position: relative;
+  width: 340px;
+  height: 350px;
+}

@@ -156,6 +156,7 @@ p.dont-do a {
     cursor: pointer;
     letter-spacing: 1px;
     padding: 10px 0;
+    width: 150px;
     background: #b3020d;
     color: #fff;
     margin: 2vw 0 1.5vw;
